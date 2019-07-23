@@ -29,6 +29,7 @@ pipeline {
     stage('Run docker image on kubernetes cluster') {
       steps {
         node('EKS-master'){
+          checkout scm
          sh 'kubectl apply -f deployment.yaml'
          sh 'kubectl apply -f service.yaml'
         }
